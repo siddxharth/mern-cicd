@@ -21,6 +21,10 @@ services:
       dockerfile: Dockerfile
     image: yoismak/quiz-backend:latest
     container_name: backend
+    environment:
+      - PORT=${PORT}
+      - MONGODB_URI=${MONGODB_URI}
+      - JWT_SECRET=${JWT_SECRET}
     ports:
       - "3001:3001"
     depends_on:
