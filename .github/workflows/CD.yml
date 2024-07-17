@@ -20,6 +20,9 @@ jobs:
 
             - name: Pull Docker Images
               run: docker compose pull
-
             - name: Start Containers
+              env:
+                  MONGODB_URI: ${{ secrets.MONGODB_URI }}
+                  PORT: ${{ secrets.PORT }}
+                  JWT_SECRET: ${{ secrets.JWT_SECRET }}
               run: docker compose up -d
