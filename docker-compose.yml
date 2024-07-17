@@ -1,15 +1,14 @@
 services:
   frontend:
+    environment:
+      - VITE_BACKEND_URI=localhost
+      - VITE_BACKEND_PORT=3001
     build:
       context: ./frontend
       dockerfile: Dockerfile
-    image: yoismak/quiz-frontend:latest
     container_name: frontend
     ports:
       - "3000:3000"
-    environment:
-      - VITE_APP_BACKEND_URL=backend
-      - VITE_APP_BACKEND_PORT=3001
     depends_on:
       - backend
     networks:
@@ -19,12 +18,11 @@ services:
     build:
       context: ./backend
       dockerfile: Dockerfile
-    image: yoismak/quiz-backend:latest
     container_name: backend
     environment:
       - PORT=3001
-      - MONGODB_URI=mongodb://mongodb:27017/yourdbname
-      - JWT_SECRET=yourjwtsecret
+      - MONGODB_URI=mongodb://mongodb:27017/quiz
+      - JWT_SECRET=somejwtsecret
     ports:
       - "3001:3001"
     depends_on:
