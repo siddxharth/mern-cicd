@@ -3,6 +3,7 @@ services:
     build:
       context: ./frontend
       dockerfile: Dockerfile
+    image: yoismak/quiz-frontend:latest
     container_name: frontend
     ports:
       - "3000:3000"
@@ -18,6 +19,7 @@ services:
     build:
       context: ./backend
       dockerfile: Dockerfile
+    image: yoismak/quiz-backend:latest
     container_name: backend
     ports:
       - "3001:3001"
@@ -28,6 +30,7 @@ services:
 
   mongodb:
     image: mongo
+    container_name: mongodb
     ports:
       - "27017:27017"
     networks:
