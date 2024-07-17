@@ -8,8 +8,8 @@ services:
     ports:
       - "3000:3000"
     environment:
-      - BACKEND_URL=backend
-      - BACKEND_PORT=3001
+      - VITE_APP_BACKEND_URL=backend
+      - VITE_APP_BACKEND_PORT=3001
     depends_on:
       - backend
     networks:
@@ -22,9 +22,9 @@ services:
     image: yoismak/quiz-backend:latest
     container_name: backend
     environment:
-      - PORT=${PORT}
-      - MONGODB_URI=${MONGODB_URI}
-      - JWT_SECRET=${JWT_SECRET}
+      - PORT=3001
+      - MONGODB_URI=mongodb://mongodb:27017/yourdbname
+      - JWT_SECRET=yourjwtsecret
     ports:
       - "3001:3001"
     depends_on:
